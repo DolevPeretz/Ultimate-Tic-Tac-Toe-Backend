@@ -1,0 +1,2 @@
+class GameSessionMetadataApiModelConverter:
+    pass

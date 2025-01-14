@@ -1,4 +1,3 @@
-from datetime import datetime
 from typing import List
 from src.ultimate_tic_tac_toe.api.models.api_model_base import ApiModelBase
 from pydantic.fields import Field

@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List
 from src.ultimate_tic_tac_toe.domain.enums.current_player import Current_Player
 
 
@@ -16,7 +16,7 @@ class MiniBoard:
         else:
             return {"message": "Invalid move, square is already occupied."}
 
-    def check_winner(self) -> Optional[str]:
+    def check_winner(self) -> [str | None]:
         for row in self.mainBoard:
             if row[0] == row[1] == row[2] and row[0] is not None:
                 return row[0]

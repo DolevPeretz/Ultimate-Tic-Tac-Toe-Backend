@@ -3,4 +3,4 @@ from src.ultimate_tic_tac_toe.domain.enums.game_difficulty_level import GameDiff
 from pydantic.fields import Field
 
 class GameSessionCreationRequestApiModel(ApiModelBase):
-    difficulty_level: GameDifficultyLevel = Field(..., description="The game session starting difficulty level, can be modified mid-game")
+    difficultyLevel: GameDifficultyLevel = Field(..., description="The game session starting difficulty level, can be modified mid-game")

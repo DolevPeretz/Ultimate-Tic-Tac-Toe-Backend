@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from src.ultimate_tic_tac_toe.api.models.game_session_creation_request_api_model import \
     GameSessionCreationRequestApiModel
 from src.ultimate_tic_tac_toe.api.models.Game_State import GameStateApiModel
-from src.ultimate_tic_tac_toe.domain.entities.MainBoard import MainBoard
+from src.ultimate_tic_tac_toe.domain.entities.MainBoardModel import MainBoard
 
 game_state_router = APIRouter(prefix="/gameState")
 

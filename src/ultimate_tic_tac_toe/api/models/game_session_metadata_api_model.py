@@ -1,8 +1,6 @@
 from datetime import datetime
-
 from src.ultimate_tic_tac_toe.api.models.api_model_base import ApiModelBase
 from pydantic.fields import Field
-
 from src.ultimate_tic_tac_toe.domain.enums.game_difficulty_level import GameDifficultyLevel
 from src.ultimate_tic_tac_toe.domain.enums.state_game import StateGame
 

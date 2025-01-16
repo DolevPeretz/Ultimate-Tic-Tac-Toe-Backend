@@ -13,9 +13,10 @@ class MiniBoard:
         if self.board[x][y] is not None:
             raise ValueError("המקום כבר תפוס!")
         self.board[x][y] = current_player
-        if self.check_winner():
-            return True
-        return False
+        return True
+        # if self.check_winner():
+        #     return True
+        # return False
 
     def check_winner(self):
         for row in self.board:

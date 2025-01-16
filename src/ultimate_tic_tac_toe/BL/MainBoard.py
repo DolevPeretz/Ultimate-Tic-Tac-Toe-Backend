@@ -1,4 +1,5 @@
 from src.ultimate_tic_tac_toe.BL.MiniBoard import MiniBoard
+from src.ultimate_tic_tac_toe.BL.ai_logic import TicTacToeAI
 
 
 class UltimateTicTacToe:
@@ -6,6 +7,8 @@ class UltimateTicTacToe:
         self.board = [MiniBoard() for _ in range(9)]
         self.current_player = "X"
         self.winner = None
+        self.ai = TicTacToeAI(self)
+
 
     def print_board(self):
         for i in range(3):
@@ -21,13 +24,29 @@ class UltimateTicTacToe:
         print("-" * 9)
 
     def make_move(self, mini_board_index, x, y):
-        mini_board = self.board[mini_board_index]
-        if mini_board.make_move(x, y,self.current_player):
-            print(f"ניצחון עבור {self.current_player} בלוח הקטן!")
-            if self.check_winner():
-                print(f"ניצחון עבור {self.current_player} במשחק!")
-                return True
-        self.current_player = "O" if self.current_player == "X" else "X"
+
+        while self.current_player == "X":
+            mini_board = self.board[mini_board_index]
+            if mini_board.make_move(x, y, self.current_player) :
+                if mini_board.check_winner():
+                    print(f"ניצחון עבור {self.current_player} במשחק!")
+                    if self.check_winner():
+                        print(f"ניצחון עבור {self.current_player} במשחק!")
+                        return True
+                self.current_player = "O"
+        while self.current_player == "O":
+            print("dolev here")
+            move = self.ai.best_move()
+            if move:
+                mini_board_index, x, y = move
+                mini_board = self.board[mini_board_index]
+                if mini_board.make_move(x, y, "O"):
+                    print(f"המחשב עשה את המהלך בלוח {mini_board_index}, בשורה {x}, בעמודה {y}")
+                    if self.check_winner():  # בדוק אם יש מנצח במשחק
+                        print(f"ניצחון עבור {self.current_player} במשחק!")
+                        return True
+                    self.current_player = "X"
+
         return False
 
     def check_winner(self):
@@ -36,7 +55,6 @@ class UltimateTicTacToe:
                 i * 3 + 2].check_winner():
                 print(f"ניצחון עבור {self.current_player} בשורה {i + 1}!")
                 return True
-
         for i in range(3):
             if self.board[i].check_winner() and self.board[i + 3].check_winner() and self.board[i + 6].check_winner():
                 print(f"ניצחון עבור {self.current_player} בעמודה {i + 1}!")
@@ -50,4 +68,3 @@ class UltimateTicTacToe:
             return True
 
         return False
-

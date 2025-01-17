@@ -9,9 +9,9 @@ class MiniBoard:
 
     def make_move(self, x, y,current_player):
         if x < 0 or x > 2 or y < 0 or y > 2:
-            raise ValueError("השורה או העמודה לא בטווח! יש לבחור שורה ועמודה בין 0 ל-2.")
+            raise ValueError("Not in the range ")
         if self.board[x][y] is not None:
-            raise ValueError("המקום כבר תפוס!")
+            raise ValueError("The place alredy taken")
         self.board[x][y] = current_player
         return True
         # if self.check_winner():

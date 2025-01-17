@@ -10,7 +10,6 @@ from fastapi import FastAPI
 from src.ultimate_tic_tac_toe.BL.MainBoard import UltimateTicTacToe
 from src.ultimate_tic_tac_toe.BL.ai_logic import TicTacToeAI
 from src.ultimate_tic_tac_toe.api.routes.game_sessions_routes import game_sessions_router
-from src.ultimate_tic_tac_toe.api.routes.game_state import game_state_router
 from src.ultimate_tic_tac_toe.domain.entities.MainBoardModel import MainBoard
 from src.ultimate_tic_tac_toe.domain.enums import current_player
 

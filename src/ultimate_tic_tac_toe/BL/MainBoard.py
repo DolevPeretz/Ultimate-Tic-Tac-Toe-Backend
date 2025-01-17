@@ -29,21 +29,20 @@ class UltimateTicTacToe:
             mini_board = self.board[mini_board_index]
             if mini_board.make_move(x, y, self.current_player) :
                 if mini_board.check_winner():
-                    print(f"ניצחון עבור {self.current_player} במשחק!")
+                    print(f"The Winer Of the Game {self.current_player} !")
                     if self.check_winner():
-                        print(f"ניצחון עבור {self.current_player} במשחק!")
+                        print(f" The Winer Of the Game  {self.current_player} !")
                         return True
                 self.current_player = "O"
         while self.current_player == "O":
-            print("dolev here")
             move = self.ai.best_move()
             if move:
                 mini_board_index, x, y = move
                 mini_board = self.board[mini_board_index]
                 if mini_board.make_move(x, y, "O"):
-                    print(f"המחשב עשה את המהלך בלוח {mini_board_index}, בשורה {x}, בעמודה {y}")
-                    if self.check_winner():  # בדוק אם יש מנצח במשחק
-                        print(f"ניצחון עבור {self.current_player} במשחק!")
+                    print(f"Computer Move {mini_board_index}, בשורה {x}, בעמודה {y}")
+                    if self.check_winner():
+                        print(f"The Winer Of the Game  {self.current_player} במשחק!")
                         return True
                     self.current_player = "X"
 
@@ -53,18 +52,18 @@ class UltimateTicTacToe:
         for i in range(3):
             if self.board[i * 3].check_winner() and self.board[i * 3 + 1].check_winner() and self.board[
                 i * 3 + 2].check_winner():
-                print(f"ניצחון עבור {self.current_player} בשורה {i + 1}!")
+                print(f"Winer in the Row{self.current_player}  {i + 1}!")
                 return True
         for i in range(3):
             if self.board[i].check_winner() and self.board[i + 3].check_winner() and self.board[i + 6].check_winner():
-                print(f"ניצחון עבור {self.current_player} בעמודה {i + 1}!")
+                print(f"Winer in the Colum {self.current_player}  {i + 1}!")
                 return True
 
         if self.board[0].check_winner() and self.board[4].check_winner() and self.board[8].check_winner():
-            print("ניצחון באלכסון ראשי!")
+            print("Winer in the Diagonal")
             return True
         if self.board[2].check_winner() and self.board[4].check_winner() and self.board[6].check_winner():
-            print("ניצחון באלכסון משני!")
+            print("Winer in the Diagonal")
             return True
 
         return False

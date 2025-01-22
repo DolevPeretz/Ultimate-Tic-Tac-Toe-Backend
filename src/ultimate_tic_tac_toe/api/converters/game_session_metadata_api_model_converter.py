@@ -6,7 +6,7 @@ class GameSessionMetadataApiModelConverter:
 
     @staticmethod
     def to_api_model(session_metadata: GameSessionMetadata) -> GameSessionMetadataApiModel:
-        return GameSessionMetadataApiModel(
+        return GameSessionMetadataApiModel(  
             game_id=session_metadata.game_id,
             game_name=session_metadata.game_name,
             title=session_metadata.title,
@@ -14,6 +14,7 @@ class GameSessionMetadataApiModelConverter:
             difficulty_level=session_metadata.difficulty_level,
             create_time=session_metadata.create_time,
             update_time=session_metadata.update_time,
+            state=session_metadata.state,
         )
 
     @staticmethod
@@ -26,4 +27,6 @@ class GameSessionMetadataApiModelConverter:
             difficulty_level=api_model.difficulty_level,
             create_time=api_model.create_time,
             update_time=api_model.update_time,
+            state=api_model.state,
+
         )

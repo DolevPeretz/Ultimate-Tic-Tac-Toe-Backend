@@ -14,6 +14,7 @@ class GameSession:
     difficulty_level: GameDifficultyLevel = Field(...,description="The game difficulty level, can be modified mid-game")
     create_time: datetime
     update_time: datetime
+    state: str = Field(..., description="The game session state unique id")
 
 
 

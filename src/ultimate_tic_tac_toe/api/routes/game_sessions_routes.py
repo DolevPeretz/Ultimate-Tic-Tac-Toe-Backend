@@ -7,30 +7,32 @@ from src.ultimate_tic_tac_toe.api.models.game_session_creation_request_api_model
     GameSessionCreationRequestApiModel
 from src.ultimate_tic_tac_toe.api.models.game_session_metadata_api_model import GameSessionMetadataApiModel
 from src.ultimate_tic_tac_toe.domain.enums.game_status import GameStatus
+from src.ultimate_tic_tac_toe.BL.services import Services
+
 game_sessions_router = APIRouter(prefix="/gameSessions")
 game_sessions_dict={}
-from src.ultimate_tic_tac_toe.BL.services import Services
 
 service=Services()
 
 @game_sessions_router.post("")
 async def create_game_session(creation_request: GameSessionCreationRequestApiModel) -> GameSessionMetadataApiModel:
-    #לשאול את אלדר בנוגע ל-ID אם זה לא משהו שאמור להיווצר ב -DL אז למה הוא צריך להיות ב- MODEL?
     game_session_id = str(uuid.uuid4())
     game_session_name = str(uuid.uuid4())
     game_session_title = ""
     game_session_status = GameStatus.in_progress
     game_session_difficulty = creation_request.difficultyLevel
     current_time = datetime.now()
+    state = "" 
 
     game_session = GameSessionMetadataApiModel(
-        id=game_session_id,
-        name=game_session_name,
+        game_id=game_session_id,
+        game_name=game_session_name,
         title=game_session_title,
         status=game_session_status,
         difficulty_level=game_session_difficulty,
         create_time=current_time,
-        update_time=current_time
+        update_time=current_time,
+        state=state  
     )
     service.create_game_session_dl(game_session)
     return game_session
@@ -79,6 +81,9 @@ async def get_game_state_by_session(game_session_id: str):
             detail=f"No game states found for session {game_session_id}"
         )
     return game_states
+
+    
+
 
 
 

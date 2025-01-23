@@ -1,4 +1,4 @@
-from typing import Dict, Any
+from typing import  Any
 from fastapi import HTTPException, status
 from src.ultimate_tic_tac_toe.DL.DB import Dictionary,Dictionary_state
 
@@ -7,7 +7,7 @@ class Services:
         pass
 
     def create_game_session_dl(self, creation_request: dict[str, Any]) -> None:
-        Dictionary[creation_request['id']] = creation_request
+        Dictionary[creation_request.id] = creation_request
 
     def list_game_sessions(self) -> dict[str, Any]:
         return Dictionary.values()
@@ -21,7 +21,7 @@ class Services:
             )
         return game_session
 
-    def delete_game_session(self, game_session_id: str) -> dict:
+    def delete_game_session(self, game_session_id: str) -> dict[str, Any]:
         game_session = Dictionary.pop(game_session_id, None)
         if not game_session:
             raise HTTPException(
